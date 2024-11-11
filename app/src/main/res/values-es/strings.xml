@@ -6,4 +6,9 @@
         <string name="anthem_play">Reproducir himno</string>
         <string name="anthem_pause">Pausar himno</string>
         <string name="go_home">Volver</string>
+
+        <string name="photos">Galería</string>
+        <string name="GuggenheimTitle">Guggenheim</string>
+        <string name="GuggenheimDescription">El Museo Guggenheim es un museo de arte ubicado en Bilbao, España. Es el segundo museo de arte más grande del mundo y el más grande de España.</string>
+        <string name="CamButtonTitle">Presiona para abrir la cámara</string>
     </resources>

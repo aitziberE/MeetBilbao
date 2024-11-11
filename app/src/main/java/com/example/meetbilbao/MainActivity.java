@@ -1,26 +1,13 @@
-package com.example.meetbilbao;
+package com.example.meetbilbaomain;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.webkit.WebResourceRequest;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -50,5 +37,80 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        ImageButton ibBilbao = findViewById(R.id.IBBilbao);
+        ibBilbao.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                onClickBilbao(v);
+            }
+        });
+
+        ImageButton ibBec = findViewById(R.id.IBBec);
+        ibBec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickBec(v);
+            }
+        });
+
+        ImageButton ibGuggenheim = findViewById(R.id.IBGuggenheim);
+        ibBec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGuggenheim(v);
+            }
+        });
+
+        ImageButton ibSanMames = findViewById(R.id.IBSanMames);
+        ibBec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickSanMames(v);
+            }
+        });
+
+    }
+
+    private void onClickBilbao(View v) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.bilbao.eus"));
+
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Error al abrir el sitio web", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onClickBec(View v) {
+        try {
+            Intent intent = new Intent(MainActivity.this, BECActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al abrir la actividad BEC", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void onClickGuggenheim(View v) {
+        try {
+            Intent intent = new Intent(MainActivity.this, GuggenheimActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al abrir la actividad Guggenheim", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void onClickSanMames(View v) {
+        try {
+            Intent intent = new Intent(MainActivity.this, SanMamesActivity.class);
+            startActivity(intent);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al abrir la actividad San Mamés", Toast.LENGTH_SHORT).show();
+        }
     }
 }

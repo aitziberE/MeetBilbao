@@ -5,4 +5,5 @@
         <string name="san_mames_description">San Mamés es un estadio legendario en la historia del fútbol, conocido como "La Catedral", con una capacidad de 53,000 espectadores. Inaugurado en 2013, combina un diseño moderno con una rica herencia.</string>
         <string name="anthem_play">Reproducir himno</string>
         <string name="anthem_pause">Pausar himno</string>
+        <string name="go_home">Volver</string>
     </resources>

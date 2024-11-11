@@ -37,7 +37,7 @@ public class SanMamesActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private SeekBar sbAudioProgress;
     private boolean isPlaying = false;
-    private Button btnPlayAnthem, btnBookTour, btnLearnMore, btnCaptureMedia;
+    private Button btnPlayAnthem, btnMain;
     private Spinner spinnerLanguage;
     private WebView map;
     private ImageView img;
@@ -49,6 +49,7 @@ public class SanMamesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_san_mames);
 
         initViews();
+        setupHomeNavigation();
         setupAudioPlayer();
         setupLanguageSpinner();
         setupMap();
@@ -65,6 +66,16 @@ public class SanMamesActivity extends AppCompatActivity {
 //        });
     }
 
+    private void setupHomeNavigation() {
+        btnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setClass(v.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
     private void setupAudioPlayer() {
         mediaPlayer = MediaPlayer.create(this, R.raw.team_anthem);
         sbAudioProgress.setMax(mediaPlayer.getDuration());
@@ -206,6 +217,8 @@ public class SanMamesActivity extends AppCompatActivity {
 
     private void initViews() {
 
+        btnMain = findViewById(R.id.btnMain);
+        btnMain.setText(R.string.go_home);
         tfTitle = findViewById(R.id.tfTitle);
         tfTitle.setText(R.string.san_mames_title);
         tfDescription = findViewById(R.id.tfDescription);

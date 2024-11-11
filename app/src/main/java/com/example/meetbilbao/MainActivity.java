@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton ibGuggenheim = findViewById(R.id.IBGuggenheim);
-        ibBec.setOnClickListener(new View.OnClickListener() {
+        ibGuggenheim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickGuggenheim(v);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton ibSanMames = findViewById(R.id.IBSanMames);
-        ibBec.setOnClickListener(new View.OnClickListener() {
+        ibSanMames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickSanMames(v);

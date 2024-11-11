@@ -1,20 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MeetBilbao</string>
+
     <string name="appTitle">Meet Bilbao</string>
-    <string name="appDescription">Explora lo mejor de Bilbao con nuestra app diseñada para turistas y amantes de la cultura. Navega fácilmente entre los puntos de interés y elige qué lugar quieres conocer.</string>
-    <string name="guggenheim">Guggenheim</string>
-    <string name="sanMames">San Mamés</string>
-    <string name="bec">BEC</string>
-    <string name="bilbao">Bilbao</string>
-
-    <string name="fotos">Fotos</string>
-    <string name="BEC_description">The Bilbao Exhibition Centre (BEC) is a modern conference and exhibition center located in Barakaldo, Spain, hosting a variety of events and conventions.</string>
-    <string name="BEC">BEC</string>
-    <string name="descipcion_camara">Botón para abrir la cámara</string>
-
     <string name="san_mames_title">San Mames</string>
     <string name="san_mames_description">San Mames is a legendary stadium in football history, known as "The Cathedral," with a capacity of 53,000. Opened in 2013, it blends modern design with a rich heritage.</string>
     <string name="anthem_play">Play anthem</string>
     <string name="anthem_pause">Pause anthem</string>
+    <string name="go_home">Home</string>
+    <string name="photos">Gallery</string>
+    <string name="GuggenheimTitle">Guggenheim</string>
+    <string name="GuggenheimDescription">The Guggenheim Museum is an art museum located in Bilbao, Spain. It is the second largest art museum in the world and the largest in Spain.</string>
+    <string name="CamButtonTitle">Press to open the camera</string>
+    <string name="fotos">Photos</string>
+    <string name="BEC_description">The Bilbao Exhibition Centre (BEC) is a modern conference and exhibition center located in Barakaldo, Spain, hosting a variety of events and conventions.</string>
+    <string name="BEC">BEC</string>
+    <string name="descipcion_camara">Button to open the camera</string>
+    <string name="appDescription">Explore the best of Bilbao with our app designed for tourists and culture enthusiasts. Easily navigate between points of interest and choose where you want to go.</string>
+    <string name="guggenheim">Guggenheim</string>
+    <string name="sanMames">San Mames</string>
+    <string name="bec">BEC</string>
+    <string name="bilbao">Bilbao</string>
 </resources>
-

@@ -3,31 +3,67 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".SanMamesActivity">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/carrusel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerLanguage" />
+
 
         <TextView
             android:id="@+id/tfTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:shadowColor="#80000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/carrusel"
+            app:layout_constraintEnd_toEndOf="@id/carrusel"
+            app:layout_constraintStart_toStartOf="@id/carrusel"
+            app:layout_constraintTop_toTopOf="@id/carrusel" />
+
+        <RatingBar
+            android:id="@+id/rBStars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:numStars="5"
+            android:rating="4.0"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:stepSize="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img"
-            app:layout_constraintVertical_bias="0.228" />
+            app:layout_constraintTop_toBottomOf="@id/carrusel" />
 
         <TextView
             android:id="@+id/tfDescription"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/tfTitle"
-            tools:layout_editor_absoluteX="177dp" />
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rBStars" />
+
 
         <Button
             android:id="@+id/btnPlayAnthem"
@@ -41,7 +77,7 @@
 
         <SeekBar
             android:id="@+id/sbAudioProgress"
-            android:layout_width="wrap_content"
+            android:layout_width="409dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,28 +86,41 @@
 
         <Spinner
             android:id="@+id/spinnerLanguage"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="1dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteX="3dp" />
 
         <WebView
             android:id="@+id/webViewMap"
-            android:layout_width="248dp"
-            android:layout_height="258dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sbAudioProgress" />
 
         <ImageView
-            android:id="@+id/img"
+            android:id="@+id/imgViewMap"
+            android:layout_width="396dp"
+            android:layout_height="369dp"
+            android:src="@drawable/san_mames_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/webViewMap" />
+
+        <Button
+            android:id="@+id/btnMain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="142dp"
-            tools:layout_editor_absoluteY="67dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgViewMap"
+            tools:layout_editor_absoluteX="317dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

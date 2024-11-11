@@ -1,42 +1,25 @@
-package com.example.meetbilbaomain;
-
+package com.example.meetbilbao;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.squareup.picasso.Picasso;
-
-import java.util.Locale;
-
-
-
 public class MainActivity extends AppCompatActivity {
-
-    private TextView tfTitle, tfDescription;
-    private MediaPlayer mediaPlayer;
-    private SeekBar sbAudioProgress;
-    private boolean isPlaying = false;
-    private Button btnPlayAnthem, btnBookTour, btnLearnMore, btnCaptureMedia;
-    private Spinner spinnerLanguage;
-    private WebView map;
-    private ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -60,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton ibGuggenheim = findViewById(R.id.IBGuggenheim);
-        ibBec.setOnClickListener(new View.OnClickListener() {
+        ibGuggenheim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickGuggenheim(v);
@@ -68,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ImageButton ibSanMames = findViewById(R.id.IBSanMames);
-        ibBec.setOnClickListener(new View.OnClickListener() {
+        ibSanMames.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onClickSanMames(v);

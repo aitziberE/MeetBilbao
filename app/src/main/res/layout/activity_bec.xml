@@ -27,8 +27,6 @@
         android:shadowDy="2"
         android:shadowRadius="4"
         android:text="@string/BEC"
-        android:textColor="@android:color/white"
-        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/viewPager"
         app:layout_constraintEnd_toEndOf="@id/viewPager"

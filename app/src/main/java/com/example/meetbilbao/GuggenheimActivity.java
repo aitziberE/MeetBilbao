@@ -16,16 +16,16 @@ public class GuggenheimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guggenheim);
 
-        VideoView videoView = findViewById(R.id.videoView);
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.guggenheim_video;
-        Uri uri = Uri.parse(videoPath);
-        videoView.setVideoURI(uri);
+//        VideoView videoView = findViewById(R.id.videoView);
+//        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.guggenheim_video;
+//        Uri uri = Uri.parse(videoPath);
+//        videoView.setVideoURI(uri);
 
         // Reproducir el video sin audio
-        videoView.setOnPreparedListener(mediaPlayer -> {
-            mediaPlayer.setVolume(0f, 0f); // Silencia el audio
-            mediaPlayer.start(); // Inicia el video
-        });
+//        videoView.setOnPreparedListener(mediaPlayer -> {
+//            mediaPlayer.setVolume(0f, 0f); // Silencia el audio
+//            mediaPlayer.start(); // Inicia el video
+//        });
 
         // Mapa interactivo para abrir Google Maps
         ImageView mapImage = findViewById(R.id.guggenheimMap);

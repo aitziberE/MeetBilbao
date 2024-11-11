@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,12 +28,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 public class SanMamesActivity extends AppCompatActivity {
+
+    private static final String DB_NAME = "dbMeetBilbao";
+    private static final String TABLE_LOCATIONS = "locations";
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_IMG = "img";
+
 
     private TextView tfTitle, tfDescription;
     private MediaPlayer mediaPlayer;
@@ -41,6 +52,7 @@ public class SanMamesActivity extends AppCompatActivity {
     private Spinner spinnerLanguage;
     private WebView map;
     private ImageView img;
+    private ViewPager2 carrusel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +60,24 @@ public class SanMamesActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_san_mames);
 
+        setupDB();
         initViews();
         setupHomeNavigation();
         setupAudioPlayer();
         setupLanguageSpinner();
-        setupMap();
-        setupImg();
+        //setupMap();
+        setupCarrusel();
+        setupMuseum();
 
     }
+
+    private void setupDB(){
+        SQLiteDatabase db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_LOCATIONS + " (" + COLUMN_NAME + " VARCHAR(20), " + COLUMN_IMG + " VARCHAR(100));");
+        db.execSQL("INSERT INTO " + TABLE_LOCATIONS + " (" + COLUMN_NAME + ", " + COLUMN_IMG + ") VALUES ('San Mames', 'drawable/san_mames_outside_daylight');");
+        db.close();
+    }
+
 
     private void setupHomeNavigation() {
         btnMain.setOnClickListener(new View.OnClickListener() {
@@ -134,9 +156,7 @@ public class SanMamesActivity extends AppCompatActivity {
                 } else if (selectedLanguage.equals("English")) {
                     languageCode = "en";
                 }
-
                 changeLanguage(languageCode);
-
             }
 
             @Override
@@ -158,39 +178,64 @@ public class SanMamesActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setupMap(){
+//    private void setupMap(){
+//        map.getSettings().setJavaScriptEnabled(true);
+//
+//        //7372+M7 Bilbao
+//        String locationUrl = "https://maps.app.goo.gl/ssvGfNHxMBsH77HV9";
+//
+//        map.loadUrl(locationUrl);
+//
+//        map.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                if (request.getUrl().toString().contains("maps")) {
+//                    return false;
+//                } else {
+//                    return super.shouldOverrideUrlLoading(view, request);
+//                }
+//            }
+//        });
+//        map.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(locationUrl));
+//                startActivity(intent);
+//            }
+//        });
+//
+////        ImageView mapImage = findViewById(R.id.becmap);
+////        mapImage.setColorFilter(Color.parseColor("#505050"), PorterDuff.Mode.SRC_ATOP);
+////        mapImage.setOnClickListener(view -> {
+////            Uri gmmIntentUri = Uri.parse("geo:0,0?q=Bilbao+Exhibition+Centre,+Barakaldo,+Spain");
+////            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+////            mapIntent.setPackage("com.google.android.apps.maps");
+////            startActivity(mapIntent);
+////        });
+//    }
+
+        private void setupWebView(String url) {
         map.getSettings().setJavaScriptEnabled(true);
-
-        //7372+M7 Bilbao
-        String locationUrl = "https://maps.app.goo.gl/ssvGfNHxMBsH77HV9";
-
-        map.loadUrl(locationUrl);
-
+        map.loadUrl(url);
         map.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                if (request.getUrl().toString().contains("maps")) {
-                    return false;
-                } else {
-                    return super.shouldOverrideUrlLoading(view, request);
-                }
+                return !request.getUrl().toString().contains("athletic");
             }
         });
-        map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(locationUrl));
-                startActivity(intent);
-            }
+        map.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
         });
     }
-    private void setupDB(){
-        SQLiteDatabase db = null;
-        db=openOrCreateDatabase("dbMeetBilbao", Context.MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS locations (name VARCHAR(20), img VARCHAR(100));");
-        db.execSQL("INSERT INTO locations (name, img) VALUES ('San Mames', 'https://www.dazn.com/es-ES/news/f%C3%BAtbol/por-que-san-mames-llaman-la-catedral-razon-nombre-estadio-athletic-club/omyldyqeyby41so2unfxgvh6h');");
-        db.close();
+
+    private void setupMuseum() {
+        setupWebView("https://sanmames.athletic-club.eus/museo/");
     }
+
+
+
+
     private void setupImg(){
         SQLiteDatabase db = openOrCreateDatabase("dbMeetBilbao", Context.MODE_PRIVATE, null);
         Cursor cursor = db.rawQuery("SELECT img FROM locations WHERE name = 'San Mames'", null);
@@ -203,6 +248,20 @@ public class SanMamesActivity extends AppCompatActivity {
             cursor.close();
         }
         db.close();
+    }
+
+    private void setupCarrusel(){
+        setupImg();
+
+        List<Integer> images = new ArrayList<>();
+        //images.add(R.drawable.);
+//        images.add(R.drawable.);
+//        images.add(R.drawable.);
+
+        ImageAdapter adapter = new ImageAdapter(this, images);
+        carrusel.setAdapter(adapter);
+
+        carrusel.setCurrentItem(Integer.MAX_VALUE / 2, false);
     }
 
     private void initViews() {
@@ -219,8 +278,9 @@ public class SanMamesActivity extends AppCompatActivity {
 
         spinnerLanguage = findViewById(R.id.spinnerLanguage);
 
-        img = findViewById(R.id.img);
+        //img = findViewById(R.id.img);
         map = findViewById(R.id.webViewMap);
+        carrusel = findViewById(R.id.carrusel);
     }
 
 

@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">MeetBilbao</string>
+    <string name="app_name">MeetBilbaoMain</string>
+    <string name="appTitle">Meet Bilbao</string>
+    <string name="appDescription">Explora lo mejor de Bilbao con nuestra app diseñada para turistas y amantes de la cultura. Navega fácilmente entre los puntos de interés y elige qué lugar quieres conocer.</string>
+    <string name="guggenheim">Guggenheim</string>
+    <string name="sanMames">San Mamés</string>
+    <string name="bec">BEC</string>
+    <string name="bilbao">Bilbao</string>
 </resources>

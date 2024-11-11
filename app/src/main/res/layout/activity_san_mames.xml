@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         tools:context=".SanMamesActivity">
 
         <androidx.viewpager2.widget.ViewPager2
@@ -71,7 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="btnPlayAnthem"
-            android:clickable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tfDescription" />
@@ -87,16 +86,18 @@
 
         <Spinner
             android:id="@+id/spinnerLanguage"
-            android:layout_width="409dp"
-            android:layout_height="43dp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
             android:layout_marginTop="12dp"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:layout_editor_absoluteX="3dp" />
 
         <WebView
             android:id="@+id/webViewMap"
-            android:layout_width="248dp"
-            android:layout_height="258dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,6 +108,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/webViewMap"
             tools:layout_editor_absoluteX="317dp" />
 

@@ -66,7 +66,7 @@ public class SanMamesActivity extends AppCompatActivity {
         setupLanguageSpinner();
         //setupMap();
         setupCarrusel();
-        setupMuseum();
+        //setupMuseum();
 
     }
 
@@ -209,24 +209,24 @@ public class SanMamesActivity extends AppCompatActivity {
 ////        });
 //    }
 
-        private void setupWebView(String url) {
-        map.getSettings().setJavaScriptEnabled(true);
-        map.loadUrl(url);
-        map.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return !request.getUrl().toString().contains("athletic");
-            }
-        });
-        map.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(intent);
-        });
-    }
-
-    private void setupMuseum() {
-        setupWebView("https://sanmames.athletic-club.eus/museo/");
-    }
+//        private void setupWebView(String url) {
+//        map.getSettings().setJavaScriptEnabled(true);
+//        map.loadUrl(url);
+//        map.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+//                return !request.getUrl().toString().contains("athletic");
+//            }
+//        });
+//        map.setOnClickListener(v -> {
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//            startActivity(intent);
+//        });
+//    }
+//
+//    private void setupMuseum() {
+//        setupWebView("https://sanmames.athletic-club.eus/museo/");
+//    }
 
     private String setupImg() {
         SQLiteDatabase db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);

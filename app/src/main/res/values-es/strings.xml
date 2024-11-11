@@ -1,4 +1,12 @@
-<resources>
+
+<?xml version="1.0" encoding="utf-8"?>
+ 
+    <string name="appDescription">Explore the best of Bilbao with our app designed for tourists and culture enthusiasts. Easily navigate through the points of interest and choose which place you want to visit.</string>
+
+    <string name="descipcion_camara">Botón para abrir la camara</string>
+    <string name="Return">Volver</string>
+    <string name="Audio">Audio</string>
+
     <string name="app_name">MeetBilbao</string>
     <string name="appTitle">Meet Bilbao</string>
     <string name="san_mames_title">San Mamés</string>
@@ -19,4 +27,5 @@
     <string name="sanMames">San Mames</string>
     <string name="bec">BEC</string>
     <string name="bilbao">Bilbao</string>
+
 </resources>

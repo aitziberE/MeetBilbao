@@ -4,6 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- ViewPager2 para el carrusel de imágenes en el 25% superior -->
+
+    <!-- Texto fijo en el centro del ViewPager2 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
@@ -29,6 +32,10 @@
         app:layout_constraintEnd_toEndOf="@id/viewPager"
         app:layout_constraintStart_toStartOf="@id/viewPager"
         app:layout_constraintTop_toTopOf="@id/viewPager" />
+
+    <!-- RatingBar debajo del carrusel alineado a la izquierda, con estrellas más pequeñas -->
+
+    <!-- Descripción general del BEC debajo del RatingBar centrada -->
 
     <RatingBar
         android:id="@+id/ratingBar"

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">MeetBilbao</string>
+
     <string name="appTitle">Meet Bilbao</string>
     <string name="san_mames_title">San Mames</string>
     <string name="san_mames_description">San Mames is a legendary stadium in football history, known as "The Cathedral," with a capacity of 53,000. Opened in 2013, it blends modern design with a rich heritage.</string>

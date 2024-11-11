@@ -2,9 +2,6 @@ package com.example.meetbilbao;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -13,8 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,24 +24,24 @@ public class BECActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bec);
 
-        // Referencias a los elementos de la UI
+
         ViewPager2 viewPager = findViewById(R.id.viewPager);
         ImageButton btnCamara = findViewById(R.id.btnCamara);
 
-        // Lista de imágenes para el carrusel
+
         List<Integer> images = new ArrayList<>();
         images.add(R.drawable.bec1); // Asegúrate de que estos recursos existan
         images.add(R.drawable.bec2);
         images.add(R.drawable.bec3);
 
-        // Configura el adaptador
+
         ImageAdapter adapter = new ImageAdapter(this, images);
         viewPager.setAdapter(adapter);
 
-        // Configura el carrusel para desplazamiento infinito (opcional)
+
         viewPager.setCurrentItem(Integer.MAX_VALUE / 2, false);
 
-        // Mapa interactivo para abrir Google Maps
+
         ImageView mapImage = findViewById(R.id.becmap);
 
 
@@ -60,18 +55,18 @@ public class BECActivity extends AppCompatActivity {
             }
         });
 
-        // Configura el botón de retorno a MainActivity
+
         Button btnReturn = findViewById(R.id.btnReturn);
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear un Intent para regresar a MainActivity
+
                 Intent intent = new Intent(BECActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Configura el botón de la cámara
+
         btnCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +75,7 @@ public class BECActivity extends AppCompatActivity {
         });
         ImageButton btnAudio = findViewById(R.id.btnAudio);
 
-        // Configura el botón para grabar audio
+
         btnAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +84,7 @@ public class BECActivity extends AppCompatActivity {
         });
     }
 
-    // Método para abrir la cámara
+
     private void openCamera() {
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 

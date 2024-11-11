@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MeetBilbao</string>
+    <string name="fotos">Fotos</string>
+    <string name="BEC_description">The Bilbao Exhibition Centre (BEC) is a modern conference and exhibition center located in Barakaldo, Spain, hosting a variety of events and conventions.</string>
+    <string name="BEC">BEC</string>
+    <string name="descipcion_camara">Botón para abrir la cámara</string>
 </resources>

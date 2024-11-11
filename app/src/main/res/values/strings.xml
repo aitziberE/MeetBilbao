@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">MeetBilbao</string>
+
     <string name="fotos">Fotos</string>
     <string name="BEC_description">The Bilbao Exhibition Centre (BEC) is a modern conference and exhibition center located in Barakaldo, Spain, hosting a variety of events and conventions.</string>
     <string name="BEC">BEC</string>
     <string name="descipcion_camara">Botón para abrir la cámara</string>
+
+    <string name="san_mames_title">San Mames</string>
+    <string name="san_mames_description">San Mames is a legendary stadium in football history, known as "The Cathedral," with a capacity of 53,000. Opened in 2013, it blends modern design with a rich heritage.</string>
+    <string name="anthem_play">Play anthem</string>
+    <string name="anthem_pause">Pause anthem</string>
 </resources>

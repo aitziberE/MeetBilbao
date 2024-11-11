@@ -26,9 +26,6 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.squareup.picasso.Picasso;
@@ -67,8 +64,6 @@ public class SanMamesActivity extends AppCompatActivity {
         setupLanguageSpinner();
         setupMap();
         setupCarrusel();
-        //setupMuseum();
-
     }
 
     private void setupDB(){
@@ -77,7 +72,6 @@ public class SanMamesActivity extends AppCompatActivity {
         db.execSQL("INSERT INTO " + TABLE_LOCATIONS + " (" + COLUMN_NAME + ", " + COLUMN_IMG + ") VALUES ('San Mames', 'drawable/san_mames_outside_daylight');");
         db.close();
     }
-
 
     private void setupHomeNavigation() {
         btnMain.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +82,7 @@ public class SanMamesActivity extends AppCompatActivity {
             }
         });
     }
+
     private void setupAudioPlayer() {
         mediaPlayer = MediaPlayer.create(this, R.raw.team_anthem);
         sbAudioProgress.setMax(mediaPlayer.getDuration());
@@ -110,7 +105,7 @@ public class SanMamesActivity extends AppCompatActivity {
             public void run() {
                 if (mediaPlayer != null && isPlaying) {
                     sbAudioProgress.setProgress(mediaPlayer.getCurrentPosition());
-                    sbAudioProgress.postDelayed(this, 1000); // Update every second
+                    sbAudioProgress.postDelayed(this, 1000);
                 }
             }
         };
@@ -168,40 +163,27 @@ public class SanMamesActivity extends AppCompatActivity {
         Configuration config = new Configuration();
         config.setLocale(locale);
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-        
+
         Intent refresh = new Intent(this, SanMamesActivity.class);
         startActivity(refresh);
         finish();
     }
 
     private void setupMap(){
-//        map.getSettings().setJavaScriptEnabled(true);
-//        String locationUrl = "https://maps.app.goo.gl/ssvGfNHxMBsH77HV9";
-//        map.loadUrl(locationUrl);
-//        map.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                if (request.getUrl().toString().contains("maps")) {
-//                    return false;
-//                } else {
-//                    return super.shouldOverrideUrlLoading(view, request);
-//                }
-//            }
-//        });
-//        map.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(locationUrl));
-//                startActivity(intent);
-//            }
-//        });
-
         imgViewMap.setColorFilter(Color.parseColor("#505050"), PorterDuff.Mode.SRC_ATOP);
         imgViewMap.setOnClickListener(view -> {
-            Uri gmmIntentUri = Uri.parse("geo:0,0?q=San+Mames,+Bilbao,+Spain");
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-            mapIntent.setPackage("com.google.android.apps.maps");
-            startActivity(mapIntent);
+            try {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=San+Mames,+Bilbao,+Spain");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                } else {
+                    Toast.makeText(SanMamesActivity.this, "Google Maps no está instalado", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(SanMamesActivity.this, "Error al intentar abrir el mapa", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -216,8 +198,12 @@ public class SanMamesActivity extends AppCompatActivity {
             }
         });
         map.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(intent);
+            try {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(SanMamesActivity.this, "Error al intentar abrir el navegador", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -232,7 +218,7 @@ public class SanMamesActivity extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             imgUrl = cursor.getString(0);
         } else {
-            Toast.makeText(this, "Location image can't be found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No se encontró la imagen de la ubicación", Toast.LENGTH_SHORT).show();
         }
         cursor.close();
         db.close();
@@ -252,7 +238,7 @@ public class SanMamesActivity extends AppCompatActivity {
             if (resId != 0) {
                 imgUrlList.add(resId);
             } else {
-                Toast.makeText(this, "Imagen no encontrada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Imagen no encontrada en los recursos", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -272,6 +258,7 @@ public class SanMamesActivity extends AppCompatActivity {
         tfDescription.setText(R.string.san_mames_description);
 
         btnPlayAnthem = findViewById(R.id.btnPlayAnthem);
+        btnPlayAnthem.setText(R.string.anthem_play);
         sbAudioProgress = findViewById(R.id.sbAudioProgress);
 
         spinnerLanguage = findViewById(R.id.spinnerLanguage);

@@ -1,9 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-    <resources>
-        <string name="app_name">MeetBilbao</string>
-        <string name="san_mames_title">San Mames</string>
-        <string name="san_mames_description">San Mamés es un estadio legendario en la historia del fútbol, conocido como "La Catedral", con una capacidad de 53,000 espectadores. Inaugurado en 2013, combina un diseño moderno con una rica herencia.</string>
-        <string name="anthem_play">Reproducir himno</string>
-        <string name="anthem_pause">Pausar himno</string>
-        <string name="go_home">Volver</string>
-    </resources>
+<resources>
+    <string name="app_name">MeetBilbao</string>
+    <string name="appTitle">Meet Bilbao</string>
+    <string name="san_mames_title">San Mamés</string>
+    <string name="san_mames_description">San Mamés es un estadio legendario en la historia del fútbol, conocido como "La Catedral", con una capacidad de 53,000 espectadores. Inaugurado en 2013, combina un diseño moderno con una rica herencia.</string>
+    <string name="anthem_play">Reproducir himno</string>
+    <string name="anthem_pause">Pausar himno</string>
+    <string name="go_home">Volver</string>
+    <string name="photos">Galería</string>
+    <string name="GuggenheimTitle">Guggenheim</string>
+    <string name="GuggenheimDescription">El Museo Guggenheim es un museo de arte ubicado en Bilbao, España. Es el segundo museo de arte más grande del mundo y el más grande de España.</string>
+    <string name="CamButtonTitle">Presiona para abrir la cámara</string>
+    <string name="fotos">Fotos</string>
+    <string name="BEC_description">El Bilbao Exhibition Centre (BEC) es un centro de conferencias y exposiciones moderno ubicado en Barakaldo, España, que acoge una variedad de eventos y convenciones.</string>
+    <string name="BEC">BEC</string>
+    <string name="descipcion_camara">Botón para abrir la cámara</string>
+    <string name="appDescription">Explora lo mejor de Bilbao con nuestra app diseñada para turistas y amantes de la cultura. Navega fácilmente entre los puntos de interés y elige qué lugar quieres conocer.</string>
+    <string name="guggenheim">Guggenheim</string>
+    <string name="sanMames">San Mames</string>
+    <string name="bec">BEC</string>
+    <string name="bilbao">Bilbao</string>
+</resources>

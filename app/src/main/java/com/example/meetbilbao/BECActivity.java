@@ -1,13 +1,12 @@
 package com.example.meetbilbao;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
-
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
@@ -41,6 +40,4 @@ public class BECActivity extends AppCompatActivity {
             startActivity(mapIntent);
         });
     }
-
-
 }

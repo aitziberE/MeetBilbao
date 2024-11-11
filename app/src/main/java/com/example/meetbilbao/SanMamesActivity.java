@@ -243,14 +243,22 @@ public class SanMamesActivity extends AppCompatActivity {
     }
 
     private void setupCarrusel() {
-        List<String> imgUrlList = new ArrayList<>();
+        List<Integer> imgUrlList = new ArrayList<>();
+
         String imageUrl = setupImg();
+
         if (imageUrl != null) {
-            imgUrlList.add(imageUrl);
+            String resourceName = imageUrl.split("/")[1];
+
+            int resId = getResources().getIdentifier(resourceName, "drawable", getPackageName());
+
+            if (resId != 0) {
+                imgUrlList.add(resId);
+            } else {
+                Toast.makeText(this, "Imagen no encontrada", Toast.LENGTH_SHORT).show();
+            }
         }
 
-        //imgUrlList.add();
-        //imgUrlList.add();
         ImageAdapter adapter = new ImageAdapter(this, imgUrlList);
         carrusel.setAdapter(adapter);
 

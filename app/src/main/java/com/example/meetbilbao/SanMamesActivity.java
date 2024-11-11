@@ -43,7 +43,6 @@ public class SanMamesActivity extends AppCompatActivity {
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_IMG = "img";
 
-
     private TextView tfTitle, tfDescription;
     private MediaPlayer mediaPlayer;
     private SeekBar sbAudioProgress;
@@ -95,9 +94,7 @@ public class SanMamesActivity extends AppCompatActivity {
         sbAudioProgress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (fromUser) {
-                    mediaPlayer.seekTo(progress);
-                }
+                if (fromUser) mediaPlayer.seekTo(progress);
             }
 
             @Override
@@ -107,7 +104,7 @@ public class SanMamesActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        final Runnable updateSeekBar = new Runnable() {
+        Runnable updateSeekBar = new Runnable() {
             @Override
             public void run() {
                 if (mediaPlayer != null && isPlaying) {
@@ -136,6 +133,12 @@ public class SanMamesActivity extends AppCompatActivity {
         });
     }
 
+    private void resetAudioPlayer() {
+        isPlaying = false;
+        btnPlayAnthem.setText(R.string.anthem_play);
+        sbAudioProgress.setProgress(0);
+    }
+
     private void setupLanguageSpinner() {
         String[] languages = {"English", "Español"};
 
@@ -148,15 +151,7 @@ public class SanMamesActivity extends AppCompatActivity {
         spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedLanguage = parent.getItemAtPosition(position).toString();
-
-                String languageCode = "en";
-                if (selectedLanguage.equals("Español")) {
-                    languageCode = "es";
-                } else if (selectedLanguage.equals("English")) {
-                    languageCode = "en";
-                }
-                changeLanguage(languageCode);
+                changeLanguage(position == 1 ? "es" : "en");
             }
 
             @Override
@@ -233,32 +228,30 @@ public class SanMamesActivity extends AppCompatActivity {
         setupWebView("https://sanmames.athletic-club.eus/museo/");
     }
 
-
-
-
-    private void setupImg(){
-        SQLiteDatabase db = openOrCreateDatabase("dbMeetBilbao", Context.MODE_PRIVATE, null);
-        Cursor cursor = db.rawQuery("SELECT img FROM locations WHERE name = 'San Mames'", null);
-        if (cursor.getCount() == 0) {
-            Toast.makeText(this, "Location image can't be found", Toast.LENGTH_SHORT).show();
+    private String setupImg() {
+        SQLiteDatabase db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
+        String imgUrl = null;
+        Cursor cursor = db.rawQuery("SELECT " + COLUMN_IMG + " FROM " + TABLE_LOCATIONS + " WHERE " + COLUMN_NAME + " = 'San Mames'", null);
+        if (cursor.moveToFirst()) {
+            imgUrl = cursor.getString(0);
         } else {
-            cursor.moveToFirst();
-            String imageUrl = cursor.getString(0);
-            Picasso.get().load(imageUrl).into(img);
-            cursor.close();
+            Toast.makeText(this, "Location image can't be found", Toast.LENGTH_SHORT).show();
         }
+        cursor.close();
         db.close();
+        return imgUrl;
     }
 
-    private void setupCarrusel(){
-        setupImg();
+    private void setupCarrusel() {
+        List<String> imgUrlList = new ArrayList<>();
+        String imageUrl = setupImg();
+        if (imageUrl != null) {
+            imgUrlList.add(imageUrl);
+        }
 
-        List<Integer> images = new ArrayList<>();
-        //images.add(R.drawable.);
-//        images.add(R.drawable.);
-//        images.add(R.drawable.);
-
-        ImageAdapter adapter = new ImageAdapter(this, images);
+        //imgUrlList.add();
+        //imgUrlList.add();
+        ImageAdapter adapter = new ImageAdapter(this, imgUrlList);
         carrusel.setAdapter(adapter);
 
         carrusel.setCurrentItem(Integer.MAX_VALUE / 2, false);
@@ -278,11 +271,9 @@ public class SanMamesActivity extends AppCompatActivity {
 
         spinnerLanguage = findViewById(R.id.spinnerLanguage);
 
-        //img = findViewById(R.id.img);
         map = findViewById(R.id.webViewMap);
         carrusel = findViewById(R.id.carrusel);
     }
-
 
     @Override
     protected void onDestroy() {

@@ -55,23 +55,13 @@ public class SanMamesActivity extends AppCompatActivity {
         setupMap();
         setupImg();
 
-//        Button btnSanMames = findViewById(R.id.btnSanMames);
-//
-//        btnSanMames.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, SanMamesActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     private void setupHomeNavigation() {
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_MAIN);
-                intent.setClass(v.getContext(), MainActivity.class);
+                Intent intent = new Intent(SanMamesActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

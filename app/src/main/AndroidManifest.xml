@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/bilbao"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MeetBilbaoMain"
+        android:theme="@style/Theme.MeetBilbao"
         tools:targetApi="31">
 
         <activity android:name=".MainActivity"

@@ -1,5 +1,6 @@
 package com.example.meetbilbao;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -50,7 +51,7 @@ public class SanMamesActivity extends AppCompatActivity {
     private Button btnPlayAnthem, btnMain;
     private Spinner spinnerLanguage;
     private WebView map;
-    private ImageView img;
+    private ImageView img, imgViewMap;
     private ViewPager2 carrusel;
 
     @Override
@@ -64,7 +65,7 @@ public class SanMamesActivity extends AppCompatActivity {
         setupHomeNavigation();
         setupAudioPlayer();
         setupLanguageSpinner();
-        //setupMap();
+        setupMap();
         setupCarrusel();
         //setupMuseum();
 
@@ -173,14 +174,10 @@ public class SanMamesActivity extends AppCompatActivity {
         finish();
     }
 
-//    private void setupMap(){
+    private void setupMap(){
 //        map.getSettings().setJavaScriptEnabled(true);
-//
-//        //7372+M7 Bilbao
 //        String locationUrl = "https://maps.app.goo.gl/ssvGfNHxMBsH77HV9";
-//
 //        map.loadUrl(locationUrl);
-//
 //        map.setWebViewClient(new WebViewClient() {
 //            @Override
 //            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
@@ -198,35 +195,35 @@ public class SanMamesActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-//
-////        ImageView mapImage = findViewById(R.id.becmap);
-////        mapImage.setColorFilter(Color.parseColor("#505050"), PorterDuff.Mode.SRC_ATOP);
-////        mapImage.setOnClickListener(view -> {
-////            Uri gmmIntentUri = Uri.parse("geo:0,0?q=Bilbao+Exhibition+Centre,+Barakaldo,+Spain");
-////            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-////            mapIntent.setPackage("com.google.android.apps.maps");
-////            startActivity(mapIntent);
-////        });
-//    }
 
-//        private void setupWebView(String url) {
-//        map.getSettings().setJavaScriptEnabled(true);
-//        map.loadUrl(url);
-//        map.setWebViewClient(new WebViewClient() {
-//            @Override
-//            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-//                return !request.getUrl().toString().contains("athletic");
-//            }
-//        });
-//        map.setOnClickListener(v -> {
-//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//            startActivity(intent);
-//        });
-//    }
-//
-//    private void setupMuseum() {
-//        setupWebView("https://sanmames.athletic-club.eus/museo/");
-//    }
+        imgViewMap.setColorFilter(Color.parseColor("#505050"), PorterDuff.Mode.SRC_ATOP);
+        imgViewMap.setOnClickListener(view -> {
+            Uri gmmIntentUri = Uri.parse("geo:0,0?q=San+Mames,+Bilbao,+Spain");
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+            mapIntent.setPackage("com.google.android.apps.maps");
+            startActivity(mapIntent);
+        });
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
+    private void setupWebView(String url) {
+        map.getSettings().setJavaScriptEnabled(true);
+        map.loadUrl(url);
+        map.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return !request.getUrl().toString().contains("athletic");
+            }
+        });
+        map.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        });
+    }
+
+    private void setupMuseum() {
+        setupWebView("https://sanmames.athletic-club.eus/museo/");
+    }
 
     private String setupImg() {
         SQLiteDatabase db = openOrCreateDatabase(DB_NAME, Context.MODE_PRIVATE, null);
@@ -281,6 +278,8 @@ public class SanMamesActivity extends AppCompatActivity {
 
         map = findViewById(R.id.webViewMap);
         carrusel = findViewById(R.id.carrusel);
+
+        imgViewMap = findViewById(R.id.imgViewMap);
     }
 
     @Override

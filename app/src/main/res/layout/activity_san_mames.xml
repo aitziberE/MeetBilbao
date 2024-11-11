@@ -103,6 +103,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sbAudioProgress" />
 
+        <ImageView
+            android:id="@+id/imgViewMap"
+            android:layout_width="396dp"
+            android:layout_height="369dp"
+            android:src="@drawable/san_mames_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/webViewMap" />
+
         <Button
             android:id="@+id/btnMain"
             android:layout_width="wrap_content"
@@ -110,9 +119,8 @@
             android:layout_marginTop="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/webViewMap"
+            app:layout_constraintTop_toBottomOf="@+id/imgViewMap"
             tools:layout_editor_absoluteX="317dp" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

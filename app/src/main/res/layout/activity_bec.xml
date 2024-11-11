@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- ViewPager2 para el carrusel de imágenes en el 25% superior -->
 
+    <!-- Texto fijo en el centro del ViewPager2 -->
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
@@ -83,60 +84,27 @@
         android:id="@+id/btnCamara"
         android:layout_width="73dp"
         android:layout_height="61dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="61dp"
         android:alpha="3"
-        android:background="#673AB7"
+        android:background="#ECEDED"
+        android:foreground="#DAD4DB"
         android:contentDescription="@string/descipcion_camara"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/becmap"
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
-    <ImageButton
-        android:id="@+id/btnAudio"
-        android:layout_width="73dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="11dp"
-        android:alpha="3"
-        android:background="#673AB7"
-        android:contentDescription="@string/descipcion_camara"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCamara"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
-
     <TextView
         android:id="@+id/fotos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="100dp"
         android:fontFamily="sans-serif-bold"
         android:text="@string/fotos"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/btnCamara"
-        app:layout_constraintTop_toBottomOf="@+id/becmap" />
-
-    <Button
-        android:id="@+id/btnReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="133dp"
-        android:text="@string/Return"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/becmap" />
-
-    <TextView
-        android:id="@+id/txtAudio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="53dp"
-        android:text="@string/Audio"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/btnAudio"
-        app:layout_constraintTop_toBottomOf="@+id/fotos" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,20 +22,16 @@ public class BECActivity extends AppCompatActivity {
 
         ViewPager2 viewPager = findViewById(R.id.viewPager);
 
-        // Lista de imágenes para el carrusel
         List<Integer> images = new ArrayList<>();
-        images.add(R.drawable.bec1); // Asegúrate de que estos recursos existan
+        images.add(R.drawable.bec1);
         images.add(R.drawable.bec2);
         images.add(R.drawable.bec3);
 
-        // Configura el adaptador
         ImageAdapter adapter = new ImageAdapter(this, images);
         viewPager.setAdapter(adapter);
 
-        // Configura el carrusel para desplazamiento infinito (opcional)
         viewPager.setCurrentItem(Integer.MAX_VALUE / 2, false);
 
-        // Mapa interactivo para abrir Google Maps
         ImageView mapImage = findViewById(R.id.becmap);
         mapImage.setColorFilter(Color.parseColor("#505050"), PorterDuff.Mode.SRC_ATOP);
         mapImage.setOnClickListener(view -> {

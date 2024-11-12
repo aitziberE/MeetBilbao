@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="san_mames_background">#ef8587</color>
+    <color name="san_mames_buttons">#f72025</color>
+    <color name="san_mames_black">#080808</color>
+    <color name="san_mames_white">#FAF9F6</color>
+
 </resources>

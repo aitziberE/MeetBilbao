@@ -237,6 +237,7 @@ public class SanMamesActivity extends AppCompatActivity {
 
             if (resId != 0) {
                 imgUrlList.add(resId);
+                imgUrlList.add(R.drawable.san_mames_inside);
             } else {
                 Toast.makeText(this, "Imagen no encontrada en los recursos", Toast.LENGTH_SHORT).show();
             }

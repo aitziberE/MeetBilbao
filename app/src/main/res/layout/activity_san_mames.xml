@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/san_mames_white">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,11 +28,13 @@
             android:id="@+id/tfTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:textSize="44sp"
+            android:textStyle="bold"
             android:shadowColor="#80000000"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="4"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/carrusel"
             app:layout_constraintEnd_toEndOf="@id/carrusel"
             app:layout_constraintStart_toStartOf="@id/carrusel"
@@ -39,8 +42,8 @@
 
         <RatingBar
             android:id="@+id/rBStars"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="209dp"
+            android:layout_height="42dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:numStars="5"
@@ -48,6 +51,7 @@
             android:scaleX="0.7"
             android:scaleY="0.7"
             android:stepSize="0.5"
+            android:progressTint="@color/san_mames_black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/carrusel" />
 
@@ -70,29 +74,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="btnPlayAnthem"
+            android:backgroundTint="@color/san_mames_buttons"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tfDescription" />
 
         <SeekBar
             android:id="@+id/sbAudioProgress"
-            android:layout_width="409dp"
-            android:layout_height="wrap_content"
+            android:layout_width="302dp"
+            android:layout_height="20dp"
             android:layout_marginTop="24dp"
+            android:progressTint="@color/san_mames_black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnPlayAnthem" />
 
         <Spinner
             android:id="@+id/spinnerLanguage"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_width="418dp"
+            android:layout_height="73dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:background="@color/san_mames_background"
+            android:textColor="@color/san_mames_black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:popupBackground="@color/san_mames_background"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:layout_editor_absoluteX="3dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <WebView
             android:id="@+id/webViewMap"
@@ -105,8 +115,8 @@
 
         <ImageView
             android:id="@+id/imgViewMap"
-            android:layout_width="396dp"
-            android:layout_height="369dp"
+            android:layout_width="424dp"
+            android:layout_height="207dp"
             android:src="@drawable/san_mames_map"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +127,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:backgroundTint="@color/san_mames_buttons"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgViewMap"
